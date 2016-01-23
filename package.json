@@ -1,0 +1,12 @@
+{
+  "name": "RSA",
+  "version": "0.0.1",
+  "description": "RSA Lab work for DMTaM cathedral",
+  "main": "index.html",
+  "author": "Ilya Gulya",
+  "window": {
+    "toolbar": false,
+    "width": 800,
+    "height": 500
+  }
+}
