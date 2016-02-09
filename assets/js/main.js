@@ -13,16 +13,21 @@ $(function() {
   }
   function loadPage(page) {
     if (page == undefined || page == "") {
-      $('#content').load('/hello.html')
+      showBlock("hello")
       toggleNav("hello")
     } else if (page == "azaz") {
       easterEgg()
     } else {
-      $('#content').load('/'+page+'.html', function() {
-        toggleNav(page)
-      })
+      showBlock(page)
+      toggleNav(page)
     }
   }
+
+  function showBlock(blockName) {
+    $('#content>div').hide()
+    $('#content>div[data-id='+ blockName +']').show()
+  }
+
   function toggleNav(page) {
     $('ul.nav li').each(function() {
       $(this).removeClass("active")
