@@ -1,24 +1,103 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<!-- saved from url=(0026)http://127.0.0.1:8000/#lab -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SibSUTIS 2016 RSA Lab">
     <meta name="author" content="Ilya Gulya - ilyagulya@gmail.com">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="http://127.0.0.1:8000/assets/ico/favicon.png">
 
     <title>RSA</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./RSA_files/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="./RSA_files/main.css" rel="stylesheet">
 
-    <link href="assets/fonts/lato.css" rel="stylesheet" type="text/css">
-    <link href="assets/fonts/raleway.css" rel="stylesheet" type="text/css">
-  </head>
+    <link href="./RSA_files/lato.css" rel="stylesheet" type="text/css">
+    <link href="./RSA_files/raleway.css" rel="stylesheet" type="text/css">
+  <style type="text/css"></style><style type="text/css" id="notify-bootstrap">.notifyjs-bootstrap-base {
+	font-weight: bold;
+	padding: 8px 15px 8px 14px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+}
+.notifyjs-bootstrap-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+}
+.notifyjs-bootstrap-info {
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-warn {
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+}
+</style><style type="text/css" id="core-notify">.notifyjs-corner {
+	position: fixed;
+	margin: 5px;
+	z-index: 1050;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: inherit;
+	width: inherit;
+	margin: 3px;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+}
+
+.notifyjs-hidable {
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+}</style></head>
   <body data-spy="scroll" data-offset="0" data-target="#navigation">
       <div id="navigation" class="navbar navbar-default navbar-fixed-top">
           <div class="container">
@@ -28,40 +107,40 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#azaz" id="azaz">
+                <a class="navbar-brand" href="http://127.0.0.1:8000/#azaz" id="azaz">
                   <b>RSA</b><br>
                 </a>
               </div>
               <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
-                    <li id="hello">
-                      <a href="#hello" class="smothscroll">Приветствие</a>
+                    <li id="hello" class="active">
+                      <a href="http://127.0.0.1:8000/#hello" class="smothscroll">Приветствие</a>
                     </li>
-                    <li id="theory">
-                      <a href="#theory" class="smothscroll">Теория</a>
+                    <li id="theory" class="">
+                      <a href="http://127.0.0.1:8000/#theory" class="smothscroll">Теория</a>
                     </li>
-                    <li id="lab">
-                      <a href="#lab" class="smothscroll">Лабораторная</a>
+                    <li id="lab" class="">
+                      <a href="./RSA_files/RSA.html" class="smothscroll">Лабораторная</a>
                     </li>
-                    <li id="test">
-                      <a href="#test" class="smothScroll">Тест</a>
+                    <li id="test" class="">
+                      <a href="http://127.0.0.1:8000/#test" class="smothScroll">Тест</a>
                     </li>
-                    <li id="result">
-                      <a href="#result" class="smothScroll">Результаты</a>
+                    <li id="result" class="">
+                      <a href="http://127.0.0.1:8000/#result" class="smothScroll">Результаты</a>
                     </li>
                   </ul>
               </div>
           </div>
       </div>
       <div class="container" id="content">
-        <div class="jumbotron" data-id="hello">
+        <div class="jumbotron" data-id="hello" style="display: none;">
           <h1>Привет</h1>
           <p>Приветствую тебя в этой лабораторной работе, студент. Надеюсь, выполнение её доставит тебе удовольствие, да не разочарован будешь ты результатами работы сей.</p>
           <p>
-            <a class="btn btn-primary btn-lg" role="button" href="#theory">Перейти к теории</a>
+            <a class="btn btn-primary btn-lg" role="button" href="http://127.0.0.1:8000/#theory">Перейти к теории</a>
           </p>
         </div>
-        <div class="container" data-id="theory">
+        <div class="container" data-id="theory" style="display: none;">
           <div class="row">
             <h1>Введение</h1>
             <p>Алгоритм RSA стоит у истоков асимметричной криптографии. Он был предложен тремя исследователями-математиками: Рональдом Ривестом (R.Rivest), Ади Шамиром (A.Shamir) и Леонардом Адльманом (L.Adleman) в 1977-78 годах.</p>
@@ -148,11 +227,11 @@
             </p>
             <p>Криптосистема RSA используется в самых различных продуктах, на различных платформах и во многих отраслях. В настоящее время криптосистема RSA встраивается во многие коммерческие продукты, число которых постоянно увеличивается. Также, ее используют операционные системы Microsoft, Apple, Sun и Novell. В аппаратном исполнении RSA алгоритм применяется в защищенных телефонах, на сетевых платах Ethernet, на смарт-картах, широко используется в криптографическом оборудовании THALES (Racal). Кроме того, алгоритм входит в состав всех основных протоколов для защищенных коммуникаций Internet, в том числе S/MIME, SSL и S/WAN, а также используется во многих учреждениях, например, в правительственных службах, в большинстве корпораций, в государственных лабораториях и университетах. На осень 2000 года технологии с применением алгоритма RSA были лицензированы более чем 700 компаниями.</p>
             <p>
-              <a class="btn btn-primary btn-lg" role="button" href="#lab">Перейти к лабораторной работе</a>
+              <a class="btn btn-primary btn-lg" role="button" href="./RSA_files/RSA.html">Перейти к лабораторной работе</a>
             </p>
           </div>
         </div>
-        <div class="container" data-id="lab">
+        <div class="container" data-id="lab" style="display: block;">
           <div class="row" data-step="inputPQ">
             <div class="col-md-12">
               <div class="col-md-5 margin-vertical">Введите два различных простых числа P и Q.</div>
@@ -161,9 +240,9 @@
           <div class="row" data-step="inputPQ">
             <div class="col-md-12">
               <div class="col-md-6 input-group">
-                <input type="text" class="form-control text-center" placeholder="Число P" id="numberP"/>
+                <input type="text" class="form-control text-center" placeholder="Число P" id="numberP">
                 <span class="input-group-addon" style="border-left: 0; border-right: 0;">и</span>
-                <input type="text" class="form-control text-center" placeholder="Число Q" id="numberQ"/>
+                <input type="text" class="form-control text-center" placeholder="Число Q" id="numberQ">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputPQ">Готово</button>
                 </div>
@@ -177,7 +256,7 @@
                   Введите число N
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control text-center" placeholder="Число N" id="numberN"/>
+                  <input type="text" class="form-control text-center" placeholder="Число N" id="numberN">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default ready" data-step="inputN">Готово</button>
                   </div>
@@ -188,7 +267,7 @@
                   Введите число C
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control text-center" placeholder="Число C" id="numberC"/>
+                  <input type="text" class="form-control text-center" placeholder="Число C" id="numberC">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default ready" data-step="inputC">Готово</button>
                   </div>
@@ -204,7 +283,7 @@
           <div class="row" data-step="inputD">
             <div class="col-md-12">
               <div class="col-md-3 input-group">
-                <input type="text" class="form-control text-center" placeholder="Число D" id="numberD"/>
+                <input type="text" class="form-control text-center" placeholder="Число D" id="numberD">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputD">Готово</button>
                 </div>
@@ -219,7 +298,7 @@
           <div class="row" data-step="inputE">
             <div class="col-md-12">
               <div class="col-md-3 input-group">
-                <input type="text" class="form-control text-center" placeholder="Число E" id="numberE"/>
+                <input type="text" class="form-control text-center" placeholder="Число E" id="numberE">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputE">Готово</button>
                 </div>
@@ -233,9 +312,9 @@
                   Введите пару чисел, составляющих <b>открытый</b> ключ
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control text-center" id="publickey-1" />
+                  <input type="text" class="form-control text-center" id="publickey-1">
                   <span class="input-group-addon" style="border-left: 0; border-right: 0;">и</span>
-                  <input type="text" class="form-control text-center" id="publickey-2" />
+                  <input type="text" class="form-control text-center" id="publickey-2">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default ready" data-step="inputPublicKey">Готово</button>
                   </div>
@@ -246,9 +325,9 @@
                   Введите пару чисел, составляющих <b>закрытый</b> ключ
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control text-center" id="privatekey-1" />
+                  <input type="text" class="form-control text-center" id="privatekey-1">
                   <span class="input-group-addon" style="border-left: 0; border-right: 0;">и</span>
-                  <input type="text" class="form-control text-center" id="privatekey-2" />
+                  <input type="text" class="form-control text-center" id="privatekey-2">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default ready" data-step="inputPrivateKey">Готово</button>
                   </div>
@@ -271,22 +350,22 @@
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
                   <tr id="numberCode">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
                   <tr id="pointingSymbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>.</td><td>,</td><td>!</td><td>?</td><td>;</td><td>:</td></tr>
                   <tr id="pointingCode">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
                 </tbody>
               </table>
               <table class="table table-striped table-bordered table-condensed">
@@ -302,42 +381,42 @@
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>а</td><td>б</td><td>в</td><td>г</td><td>д</td><td>е</td><td>ё</td><td>ж</td><td>з</td><td>и</td><td>й</td><td>к</td><td>л</td><td>м</td><td>н</td><td>о</td></tr>
                   <tr id="russianLower1Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
                   <tr id="russianLower2Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>п</td><td>р</td><td>с</td><td>т</td><td>у</td><td>ф</td><td>х</td><td>ц</td><td>ч</td><td>ш</td><td>щ</td><td>ъ</td><td>ы</td><td>ь</td><td>э</td><td>ю</td><td>я</td></tr>
                   <tr id="russianLower2Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>32</td><td>33</td><td>34</td><td>35</td><td>36</td><td>37</td><td>38</td><td>39</td><td>40</td><td>41</td><td>42</td><td>43</td><td>44</td><td>45</td><td>46</td><td>47</td><td>48</td></tr>
                   <tr id="russianUpper1Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>А</td><td>Б</td><td>В</td><td>Г</td><td>Д</td><td>Е</td><td>Ё</td><td>Ж</td><td>З</td><td>И</td><td>Й</td><td>К</td><td>Л</td><td>М</td><td>Н</td><td>О</td></tr>
                   <tr id="russianUpper1Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>49</td><td>50</td><td>51</td><td>52</td><td>53</td><td>54</td><td>55</td><td>56</td><td>57</td><td>58</td><td>59</td><td>60</td><td>61</td><td>62</td><td>63</td><td>64</td></tr>
                   <tr id="russianUpper2Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>П</td><td>Р</td><td>С</td><td>Т</td><td>У</td><td>Ф</td><td>Х</td><td>Ц</td><td>Ч</td><td>Ш</td><td>Щ</td><td>Ъ</td><td>Ы</td><td>Ь</td><td>Э</td><td>Ю</td><td>Я</td></tr>
                   <tr id="russianUpper2Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>65</td><td>66</td><td>67</td><td>68</td><td>69</td><td>70</td><td>71</td><td>72</td><td>73</td><td>74</td><td>75</td><td>76</td><td>77</td><td>78</td><td>79</td><td>80</td><td>81</td></tr>
                 </tbody>
               </table>
               <table class="table table-striped table-bordered table-condensed">
@@ -353,42 +432,42 @@
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td></tr>
                   <tr id="englishLower1Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>82</td><td>83</td><td>84</td><td>85</td><td>86</td><td>87</td><td>88</td><td>89</td><td>90</td><td>91</td><td>92</td><td>93</td><td>94</td></tr>
                   <tr id="englishLower2Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td></tr>
                   <tr id="englishLower2Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>95</td><td>96</td><td>97</td><td>98</td><td>99</td><td>100</td><td>101</td><td>102</td><td>103</td><td>104</td><td>105</td><td>106</td><td>107</td></tr>
                   <tr id="englishUpper1Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td></tr>
                   <tr id="englishUpper1Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>108</td><td>109</td><td>110</td><td>111</td><td>112</td><td>113</td><td>114</td><td>115</td><td>116</td><td>117</td><td>118</td><td>119</td><td>120</td></tr>
                   <tr id="englishUpper2Symbol">
                     <td>
                       Символ
                     </td>
-                  </tr>
+                  <td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr>
                   <tr id="englishUpper2Code">
                     <td>
                       Число
                     </td>
-                  </tr>
+                  <td>121</td><td>122</td><td>123</td><td>124</td><td>125</td><td>126</td><td>127</td><td>128</td><td>129</td><td>130</td><td>131</td><td>132</td><td>133</td></tr>
                 </tbody>
               </table>
             </div>
@@ -401,7 +480,7 @@
           <div class="row" data-step="inputMessage">
             <div class="col-md-12">
               <div class="col-md-4 input-group">
-                <input type="text" class="form-control text-center" placeholder="Сообщение" id="message-encode"/>
+                <input type="text" class="form-control text-center" placeholder="Сообщение" id="message-encode">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputMessage">Готово</button>
                 </div>
@@ -418,7 +497,7 @@
           <div class="row" data-step="inputMessageSequence">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence"/>
+                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputMessageSequence">Готово</button>
                 </div>
@@ -435,7 +514,7 @@
           <div class="row" data-step="inputMessageSequenceEncoded">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-encoded"/>
+                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-encoded">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputMessageSequenceEncoded">Готово</button>
                 </div>
@@ -452,7 +531,7 @@
           <div class="row" data-step="inputWrongD">
             <div class="col-md-12">
               <div class="col-md-4 input-group">
-                <input type="text" class="form-control text-center" placeholder="Значение D" id="numberWrongD"/>
+                <input type="text" class="form-control text-center" placeholder="Значение D" id="numberWrongD">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputWrongD">Готово</button>
                 </div>
@@ -469,7 +548,7 @@
           <div class="row" data-step="inputMessageSequenceDecodedWrong">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-decoded-wrong"/>
+                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-decoded-wrong">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputMessageSequenceDecodedWrong">Готово</button>
                 </div>
@@ -493,7 +572,7 @@
           <div class="row" data-step="inputMessageSequenceDecodedExample">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" disabled id="message-sequence-encoded-example"/>
+                <input type="text" class="form-control text-center" disabled="" id="message-sequence-encoded-example">
               </div>
             </div>
           </div>
@@ -507,7 +586,7 @@
           <div class="row" data-step="inputMessageSequenceDecodedExample">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-decoded-example"/>
+                <input type="text" class="form-control text-center" placeholder="Последовательность" id="message-sequence-decoded-example">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default ready" data-step="inputMessageSequenceDecodedExample">Готово</button>
                 </div>
@@ -524,7 +603,7 @@
           <div class="row" data-step="messageSequenceDecodedExampleHumanReadable">
             <div class="col-md-12">
               <div class="col-md-8 input-group">
-                <input type="text" class="form-control text-center" disabled id="message-decoded-example"/>
+                <input type="text" class="form-control text-center" disabled="" id="message-decoded-example">
               </div>
             </div>
           </div>
@@ -538,17 +617,18 @@
           <div class="row" data-step="messageSequenceDecodedExampleHumanReadable">
             <div class="col-md-12">
               <div class="col-md-8 margin-vertical">
-                <a class="btn btn-primary btn-lg" role="button" href="#test">Перейти к тесту работе</a>
+                <a class="btn btn-primary btn-lg" role="button" href="http://127.0.0.1:8000/#test">Перейти к тесту работе</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <script src="assets/js/jquery.js"></script>
-      <script src="assets/js/bootstrap.js"></script>
-      <script src="assets/js/notify.js"></script>
-      <script src="assets/js/smoothscroll.js"></script>
-      <script src="assets/js/sammy.js"></script>
-      <script src="assets/js/main.js"></script>
-  </body>
-</html>
+      <script src="./RSA_files/jquery.js"></script>
+      <script src="./RSA_files/bootstrap.js"></script>
+      <script src="./RSA_files/notify.js"></script>
+      <script src="./RSA_files/smoothscroll.js"></script>
+      <script src="./RSA_files/sammy.js"></script>
+      <script src="./RSA_files/main.js"></script>
+  
+
+</body></html>
